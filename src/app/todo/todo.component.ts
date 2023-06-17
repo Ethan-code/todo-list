@@ -14,10 +14,17 @@ export class TodoComponent implements OnInit {
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.initTasks();
+    this.fetchTasks();
   }
 
-  private initTasks(): void {
-    this.tasks = this.todoService.fetchTasks();
+  private fetchTasks(): void {
+    this.todoService.fetchTasks().subscribe((tasks) => {
+      this.tasks = tasks;
+    });
+  }
+
+  protected onTaskAdd(description: string): void {
+    this.todoService.addTask(description);
+    this.fetchTasks();
   }
 }

@@ -7,7 +7,7 @@ todo list practice.
 - Feel free to build the UI in your own way
 
 ### Test coverage
-- [ ] Can add tasks with a short description
+- [x] Can add tasks with a short description
 - [ ] Show a list of all tasks(completed/uncompleted)
 - [ ] Can set a task as completed or uncompleted
 - [ ] Can delete a task

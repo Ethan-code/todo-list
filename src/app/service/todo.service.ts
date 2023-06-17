@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of, Observable } from 'rxjs';
 import { MOCK_TODOS } from './mock-data';
 import { Task } from './task.model';
 
@@ -15,12 +15,19 @@ export class TodoService {
 
   constructor() { }
 
-  fetchTasks(): Task[] {
-    return this.data;
+  fetchTasks(): Observable<Task[]> {
+    return of(this.data);
   }
 
-  addTask(task: Task): void {
-    this.dataSubject.next([...this.data, task])
+  addTask(description: string): Observable<void> {
+    const task: Task = {
+      description,
+      createDate: new Date(),
+      updateDate: new Date(),
+      status: 'uncompleted'
+    }
+    this.dataSubject.next([...this.data, task]);
+    return of();
   }
 
 }
