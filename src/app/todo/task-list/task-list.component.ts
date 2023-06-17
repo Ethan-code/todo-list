@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Task } from 'src/app/service/task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent {
-  protected tasks: string[] = ["待辦 A", "待辦 B", "待辦 C"];
+  @Input() tasks: Task[] = [];
 }
