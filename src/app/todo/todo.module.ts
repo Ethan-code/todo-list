@@ -7,21 +7,9 @@ import { TaskComponent } from './task/task.component';
 import { TodoRoutingModule } from './todo-routing.module';
 import { TodoComponent } from './todo.component';
 
-
 @NgModule({
-  declarations: [
-    TaskFormComponent,
-    TaskListComponent,
-    TaskComponent,
-    TodoComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    TodoRoutingModule
-  ],
-  exports: [
-    TodoComponent
-  ]
+  declarations: [TaskFormComponent, TaskListComponent, TaskComponent, TodoComponent],
+  imports: [CommonModule, FormsModule, TodoRoutingModule],
+  exports: [TodoComponent],
 })
-export class TodoModule { }
+export class TodoModule {}

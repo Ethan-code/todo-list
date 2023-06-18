@@ -5,15 +5,9 @@ import { AppComponent } from './app.component';
 import { TodoModule } from './todo/todo.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    TodoModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, TodoModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

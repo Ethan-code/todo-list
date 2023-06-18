@@ -12,20 +12,19 @@ export interface DeleteTaskPayload {
 }
 export interface ChangeTaskStatusPayload {
   id: string;
-  status: TaskStatus
+  status: TaskStatus;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoService {
-
   dataSubject: BehaviorSubject<Task[]> = new BehaviorSubject(MOCK_TASKS);
   get data() {
     return this.dataSubject.value;
   }
 
-  constructor() { }
+  constructor() {}
 
   fetchTasks(): Observable<Task[]> {
     return of(this.data);
@@ -37,23 +36,23 @@ export class TodoService {
       description,
       createDate: new Date(),
       updateDate: new Date(),
-      status: 'uncompleted'
-    }
+      status: 'uncompleted',
+    };
 
     this.dataSubject.next([...this.data, task]);
     return of();
   }
 
   editTask(event: EditTaskPayload): Observable<void> {
-    let index = this.data.findIndex((task => task.id === event.id));
+    let index = this.data.findIndex((task) => task.id === event.id);
     if (index !== -1) {
       let origTask = this.data[index];
       let editedTask = {
         ...origTask,
         description: event.description,
         updateDate: new Date(),
-      }
-      const newData = this.data.map((task) => task.id === event.id ? editedTask : task)
+      };
+      const newData = this.data.map((task) => (task.id === event.id ? editedTask : task));
       this.dataSubject.next(newData);
       return of();
     } else {
@@ -62,9 +61,9 @@ export class TodoService {
   }
 
   deleteTask(event: DeleteTaskPayload): Observable<void> {
-    let index = this.data.findIndex((task => task.id === event.id));
+    let index = this.data.findIndex((task) => task.id === event.id);
     if (index !== -1) {
-      const newData = this.data.filter((task) => task.id !== event.id)
+      const newData = this.data.filter((task) => task.id !== event.id);
       this.dataSubject.next(newData);
       return of();
     } else {
@@ -73,20 +72,19 @@ export class TodoService {
   }
 
   changeTaskStatus(event: ChangeTaskStatusPayload): Observable<void> {
-    let index = this.data.findIndex((task => task.id === event.id));
+    let index = this.data.findIndex((task) => task.id === event.id);
     if (index !== -1) {
       let origTask = this.data[index];
       let editedTask = {
         ...origTask,
         status: event.status,
         updateDate: new Date(),
-      }
-      const newData = this.data.map((task) => task.id === event.id ? editedTask : task)
+      };
+      const newData = this.data.map((task) => (task.id === event.id ? editedTask : task));
       this.dataSubject.next(newData);
       return of();
     } else {
       return throwError(() => new Error('Not Found'));
     }
   }
-
 }

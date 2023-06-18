@@ -1,4 +1,4 @@
-import { Task } from "./task.model";
+import { Task } from './task.model';
 
 export const MOCK_TASKS: Task[] = [
   {
@@ -21,5 +21,5 @@ export const MOCK_TASKS: Task[] = [
     createDate: new Date('2023/06/02'),
     updateDate: new Date('2023/06/09'),
     status: 'completed',
-  }
+  },
 ];

@@ -6,26 +6,18 @@
       name="status"
       [checked]="task.status === 'completed'"
       (change)="onStatusChange($event)"
-    >
-    <div
-      class="w-full"
-      (click)="switchMode()"
-    >{{ task.description }}</div>
-    <button
-      class="btn"
-      type="button"
-      (click)="onDeleteClick($event)"
-    >X</button>
+    />
+    <div class="w-full" (click)="switchMode()">{{ task.description }}</div>
+    <button class="btn" type="button" (click)="onDeleteClick($event)">X</button>
   </div>
 </ng-container>
 <ng-template #editModeTemplate>
-  <input #input
+  <input
+    #input
     type="text"
     class="input input-bordered w-full"
     (keyup.enter)="onEnter()"
     (blur)="switchMode()"
     [(ngModel)]="description"
-  >
+  />
 </ng-template>
-
-

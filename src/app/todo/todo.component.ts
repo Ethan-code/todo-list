@@ -6,10 +6,9 @@ import { ChangeTaskItemStatusEvent, DeleteTaskItemEvent, EditTaskItemEvent } fro
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent implements OnInit {
-
   protected tasks: Task[] = [];
 
   constructor(private todoService: TodoService) {}
@@ -32,8 +31,8 @@ export class TodoComponent implements OnInit {
   protected onTaskEdit(event: EditTaskItemEvent): void {
     const editTaskPayload: EditTaskPayload = {
       id: event.id,
-      description: event.description
-    }
+      description: event.description,
+    };
     this.todoService.editTask(editTaskPayload);
     this.fetchTasks();
   }
@@ -41,7 +40,7 @@ export class TodoComponent implements OnInit {
   protected onTaskDelete(event: DeleteTaskItemEvent): void {
     const deleteTaskPayload: DeleteTaskPayload = {
       id: event.id,
-    }
+    };
     this.todoService.deleteTask(deleteTaskPayload);
     this.fetchTasks();
   }
@@ -49,8 +48,8 @@ export class TodoComponent implements OnInit {
   protected onTaskStatusChange(event: ChangeTaskItemStatusEvent): void {
     const ChangeTaskStatusPayload: ChangeTaskStatusPayload = {
       id: event.id,
-      status: event.status
-    }
+      status: event.status,
+    };
     this.todoService.changeTaskStatus(ChangeTaskStatusPayload);
     this.fetchTasks();
   }

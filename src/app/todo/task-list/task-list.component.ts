@@ -3,22 +3,22 @@ import { Task, TaskStatus } from 'src/app/service/task.model';
 import { ChangeTaskStatusEvent, DelateTaskEvent, EditTaskEvent } from '../task/task.component';
 
 export interface EditTaskItemEvent {
-  index: number,
-  id: string,
-  description: string,
+  index: number;
+  id: string;
+  description: string;
 }
 export interface DeleteTaskItemEvent {
-  id: string,
+  id: string;
 }
 export interface ChangeTaskItemStatusEvent {
-  id: string,
-  status: TaskStatus
+  id: string;
+  status: TaskStatus;
 }
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent {
   @Input() tasks: Task[] = [];
@@ -27,14 +27,14 @@ export class TaskListComponent {
   @Output() taskStatusChange: EventEmitter<ChangeTaskItemStatusEvent> = new EventEmitter();
 
   get sortedTasks() {
-    return this.tasks.sort((a, b) => b.createDate.getTime() - a.createDate.getTime())
+    return this.tasks.sort((a, b) => b.createDate.getTime() - a.createDate.getTime());
   }
 
   protected onTaskEdit(event: EditTaskEvent, index: number) {
     this.taskEdit.emit({
       index,
       id: event.id,
-      description: event.description
+      description: event.description,
     });
   }
 
@@ -47,7 +47,7 @@ export class TaskListComponent {
   protected onTaskStatusChange(event: ChangeTaskStatusEvent) {
     this.taskStatusChange.emit({
       id: event.id,
-      status: event.status
-    })
+      status: event.status,
+    });
   }
 }
