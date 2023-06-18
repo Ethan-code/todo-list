@@ -12,7 +12,7 @@ todo list practice.
 - [x] Can set a task as completed or uncompleted
 - [x] Can delete a task
 - [x] Can update the task description
-- [ ] (optional) Can sort tasks by time the tasks are created
+- [x] (optional) Can sort tasks by time the tasks are created
 - [ ] (optional) Can filter or search tasks
 - [ ] (optional) Make the UI responsive 
 

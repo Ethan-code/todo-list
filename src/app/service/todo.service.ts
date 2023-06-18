@@ -50,7 +50,8 @@ export class TodoService {
       let origTask = this.data[index];
       let editedTask = {
         ...origTask,
-        description: event.description
+        description: event.description,
+        updateDate: new Date(),
       }
       const newData = this.data.map((task) => task.id === event.id ? editedTask : task)
       this.dataSubject.next(newData);
@@ -77,7 +78,8 @@ export class TodoService {
       let origTask = this.data[index];
       let editedTask = {
         ...origTask,
-        status: event.status
+        status: event.status,
+        updateDate: new Date(),
       }
       const newData = this.data.map((task) => task.id === event.id ? editedTask : task)
       this.dataSubject.next(newData);

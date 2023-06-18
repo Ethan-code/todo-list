@@ -26,6 +26,10 @@ export class TaskListComponent {
   @Output() taskDelete: EventEmitter<DeleteTaskItemEvent> = new EventEmitter();
   @Output() taskStatusChange: EventEmitter<ChangeTaskItemStatusEvent> = new EventEmitter();
 
+  get sortedTasks() {
+    return this.tasks.sort((a, b) => b.createDate.getTime() - a.createDate.getTime())
+  }
+
   protected onTaskEdit(event: EditTaskEvent, index: number) {
     this.taskEdit.emit({
       index,
