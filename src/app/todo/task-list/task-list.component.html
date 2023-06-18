@@ -1,9 +1,22 @@
-<ng-container *ngFor="let task of sortedTasks; let i = index">
-  <app-task
-    [task]="task"
-    (taskEdit)="onTaskEdit($event, i)"
-    (taskDelete)="onTaskDelete($event)"
-    (taskStatusChange)="onTaskStatusChange($event)"
-  ></app-task>
-  <div *ngIf="i + 1 !== tasks.length" class="divider m-0"></div>
-</ng-container>
+<div class="btn-group flex mb-3">
+  <ng-container *ngFor="let condition of conditions">
+    <button
+      class="btn flex-auto"
+      [ngClass]="{ 'btn-active': selectedCondition === condition.value }"
+      type="button"
+      (click)="onFilterConditionChange(condition)"
+    >
+      {{ condition.description }}
+    </button>
+  </ng-container>
+</div>
+<div>
+  <ng-container *ngFor="let task of displayTasks; let i = index">
+    <app-task
+      [task]="task"
+      (taskEdit)="onTaskEdit($event, i)"
+      (taskDelete)="onTaskDelete($event)"
+      (taskStatusChange)="onTaskStatusChange($event)"
+    ></app-task>
+  </ng-container>
+</div>
