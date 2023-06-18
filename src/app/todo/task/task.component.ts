@@ -1,6 +1,5 @@
-import { AppComponent } from './../../app.component';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Task } from 'src/app/service/task.model';
+import { Task, TaskStatus } from 'src/app/service/task.model';
 
 export interface EditTaskEvent {
   id: string,
@@ -8,6 +7,10 @@ export interface EditTaskEvent {
 }
 export interface DelateTaskEvent {
   id: string,
+}
+export interface ChangeTaskStatusEvent {
+  id: string,
+  status: TaskStatus
 }
 
 @Component({
@@ -19,6 +22,7 @@ export class TaskComponent {
   @Input() task!: Task;
   @Output() taskEdit = new EventEmitter<EditTaskEvent>();
   @Output() taskDelete = new EventEmitter<DelateTaskEvent>();
+  @Output() taskStatusChange = new EventEmitter<ChangeTaskStatusEvent>();
 
   @ViewChild('input', { static: false }) inputElement: ElementRef | undefined;
 
@@ -63,5 +67,15 @@ export class TaskComponent {
     }
     this.taskEdit.emit(editTaskEvent);
     this.switchMode();
+  }
+
+  protected onStatusChange(event: Event) {
+    event.stopPropagation();
+    const isChecked = (event.target as HTMLInputElement).checked;
+    const changeTaskStatusEvent: ChangeTaskStatusEvent = {
+      id: this.task.id,
+      status: isChecked ? 'completed' : 'uncompleted'
+    }
+    this.taskStatusChange.emit(changeTaskStatusEvent)
   }
 }

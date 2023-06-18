@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { MOCK_TASKS } from './mock-data';
-import { Task } from './task.model';
+import { Task, TaskStatus } from './task.model';
 
 export interface EditTaskPayload {
   id: string;
@@ -9,6 +9,10 @@ export interface EditTaskPayload {
 }
 export interface DeleteTaskPayload {
   id: string;
+}
+export interface ChangeTaskStatusPayload {
+  id: string;
+  status: TaskStatus
 }
 
 @Injectable({
@@ -33,7 +37,7 @@ export class TodoService {
       description,
       createDate: new Date(),
       updateDate: new Date(),
-      status: 'completed'
+      status: 'uncompleted'
     }
 
     this.dataSubject.next([...this.data, task]);
@@ -60,6 +64,22 @@ export class TodoService {
     let index = this.data.findIndex((task => task.id === event.id));
     if (index !== -1) {
       const newData = this.data.filter((task) => task.id !== event.id)
+      this.dataSubject.next(newData);
+      return of();
+    } else {
+      return throwError(() => new Error('Not Found'));
+    }
+  }
+
+  changeTaskStatus(event: ChangeTaskStatusPayload): Observable<void> {
+    let index = this.data.findIndex((task => task.id === event.id));
+    if (index !== -1) {
+      let origTask = this.data[index];
+      let editedTask = {
+        ...origTask,
+        status: event.status
+      }
+      const newData = this.data.map((task) => task.id === event.id ? editedTask : task)
       this.dataSubject.next(newData);
       return of();
     } else {
