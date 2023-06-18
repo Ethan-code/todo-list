@@ -33,7 +33,7 @@ export class TodoService {
 
   addTask(description: string): Observable<void> {
     const task: Task = {
-      id: Date.now.toString(),
+      id: Date.now().toString(),
       description,
       createDate: new Date(),
       updateDate: new Date(),
