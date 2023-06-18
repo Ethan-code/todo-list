@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../service/task.model';
-import { EditTaskPayload, TodoService } from '../service/todo.service';
-import { EditTaskItemEvent } from './task-list/task-list.component';
+import { DeleteTaskPayload, EditTaskPayload, TodoService } from '../service/todo.service';
+import { DeleteTaskItemEvent, EditTaskItemEvent } from './task-list/task-list.component';
 
 @Component({
   selector: 'app-todo',
@@ -35,6 +35,14 @@ export class TodoComponent implements OnInit {
       description: event.description
     }
     this.todoService.editTask(editTaskPayload);
+    this.fetchTasks();
+  }
+
+  protected onTaskDelete(event: DeleteTaskItemEvent): void {
+    const deleteTaskPayload: DeleteTaskPayload = {
+      id: event.id,
+    }
+    this.todoService.deleteTask(deleteTaskPayload);
     this.fetchTasks();
   }
 }

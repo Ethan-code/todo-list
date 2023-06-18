@@ -7,6 +7,9 @@ export interface EditTaskPayload {
   id: string;
   description: string;
 }
+export interface DeleteTaskPayload {
+  id: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +49,17 @@ export class TodoService {
         description: event.description
       }
       const newData = this.data.map((task) => task.id === event.id ? editedTask : task)
+      this.dataSubject.next(newData);
+      return of();
+    } else {
+      return throwError(() => new Error('Not Found'));
+    }
+  }
+
+  deleteTask(event: DeleteTaskPayload): Observable<void> {
+    let index = this.data.findIndex((task => task.id === event.id));
+    if (index !== -1) {
+      const newData = this.data.filter((task) => task.id !== event.id)
       this.dataSubject.next(newData);
       return of();
     } else {
