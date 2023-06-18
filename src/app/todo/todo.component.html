@@ -1,5 +1,5 @@
 <div class="p-3">
-  <app-task-form class="mb-3" (taskAdd)="onTaskAdd($event)"></app-task-form>
+  <app-task-form (taskAdd)="onTaskAdd($event)"></app-task-form>
   <app-task-list
     [tasks]="tasks"
     (taskEdit)="onTaskEdit($event)"
