@@ -1,14 +1,16 @@
 <div class="px-3 py-2">
   <ng-container *ngIf="isViewMode; else editModeTemplate">
     <div class="flex items-center">
-      <input
-        class="checkbox checkbox-md rounded-full me-3"
-        type="checkbox"
-        name="status"
-        [checked]="task.status === 'completed'"
-        (change)="onStatusChange($event)"
-      />
-      <div class="w-full" (click)="switchMode()">{{ task.description }}</div>
+      <label class="flex align-center p-2 cursor-pointer">
+        <input
+          class="checkbox checkbox-md rounded-full"
+          type="checkbox"
+          name="status"
+          [checked]="task.status === 'completed'"
+          (change)="onStatusChange($event)"
+        />
+      </label>
+      <div class="p-2 w-full" (click)="switchMode()">{{ task.description }}</div>
       <button class="btn btn-ghost" type="button" (click)="onDeleteClick($event)">
         <fa-icon [icon]="faXmark"></fa-icon>
       </button>
