@@ -13,6 +13,7 @@ export class TodoComponent implements OnInit {
   protected tasks: Task[] = [];
   protected checkSound: Howl;
   protected uncheckSound: Howl;
+  protected deleteSound: Howl;
 
   constructor(private todoService: TodoService) {
     this.checkSound = new Howl({
@@ -20,6 +21,9 @@ export class TodoComponent implements OnInit {
     });
     this.uncheckSound = new Howl({
       src: ['../../assets/audio/pencil_check_mark_1-88805_short.mp3'],
+    });
+    this.deleteSound = new Howl({
+      src: ['../../assets/audio/crumple-03-40747_short.mp3'],
     });
   }
 
@@ -52,6 +56,7 @@ export class TodoComponent implements OnInit {
       id: event.id,
     };
     this.todoService.deleteTask(deleteTaskPayload);
+    this.deleteSound.play();
     this.fetchTasks();
   }
 
