@@ -64,6 +64,7 @@ export class TaskComponent {
   }
 
   protected onEnter(): void {
+    if (!this.description) return;
     const editTaskEvent: EditTaskEvent = {
       id: this.task.id,
       description: this.description,
