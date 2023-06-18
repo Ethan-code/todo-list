@@ -4,8 +4,6 @@ import { Task } from '../service/task.model';
 import { ChangeTaskStatusPayload, DeleteTaskPayload, EditTaskPayload, TodoService } from '../service/todo.service';
 import { ChangeTaskItemStatusEvent, DeleteTaskItemEvent, EditTaskItemEvent } from './task-list/task-list.component';
 
-const soundPath = '../../assets/audio/pencil_check_mark_2-105940_short.mp3';
-
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -13,11 +11,15 @@ const soundPath = '../../assets/audio/pencil_check_mark_2-105940_short.mp3';
 })
 export class TodoComponent implements OnInit {
   protected tasks: Task[] = [];
-  protected sound: Howl;
+  protected checkSound: Howl;
+  protected uncheckSound: Howl;
 
   constructor(private todoService: TodoService) {
-    this.sound = new Howl({
-      src: [soundPath],
+    this.checkSound = new Howl({
+      src: ['../../assets/audio/pencil_check_mark_2-105940_short.mp3'],
+    });
+    this.uncheckSound = new Howl({
+      src: ['../../assets/audio/pencil_check_mark_1-88805_short.mp3'],
     });
   }
 
@@ -60,7 +62,9 @@ export class TodoComponent implements OnInit {
     };
     // 在 checkbox 勾選時播放音效
     if (event.status === 'completed') {
-      this.sound.play();
+      this.checkSound.play();
+    } else if (event.status === 'uncompleted') {
+      this.uncheckSound.play();
     }
     this.todoService.changeTaskStatus(ChangeTaskStatusPayload);
     this.fetchTasks();
