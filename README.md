@@ -35,7 +35,7 @@ todo list practice.
 - [x] Use Vercel to host site
 - [ ] Use SQL like solution to store data (IndexedDB, PonchDB)
 - [ ] Add PWA support
-- [ ] Add Sound Effects
+- [x] Add Sound Effects
 
 ---
 
