@@ -1,25 +1,27 @@
-<ng-container *ngIf="isViewMode; else editModeTemplate">
-  <div class="flex items-center">
+<div class="px-3 py-2">
+  <ng-container *ngIf="isViewMode; else editModeTemplate">
+    <div class="flex items-center">
+      <input
+        class="checkbox checkbox-md rounded-full me-3"
+        type="checkbox"
+        name="status"
+        [checked]="task.status === 'completed'"
+        (change)="onStatusChange($event)"
+      />
+      <div class="w-full" (click)="switchMode()">{{ task.description }}</div>
+      <button class="btn btn-ghost" type="button" (click)="onDeleteClick($event)">
+        <fa-icon [icon]="faXmark"></fa-icon>
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #editModeTemplate>
     <input
-      class="checkbox checkbox-md rounded-full me-3"
-      type="checkbox"
-      name="status"
-      [checked]="task.status === 'completed'"
-      (change)="onStatusChange($event)"
+      #input
+      type="text"
+      class="input input-bordered w-full"
+      (keyup.enter)="onEnter()"
+      (blur)="switchMode()"
+      [(ngModel)]="description"
     />
-    <div class="w-full" (click)="switchMode()">{{ task.description }}</div>
-    <button class="btn btn-ghost" type="button" (click)="onDeleteClick($event)">
-      <fa-icon [icon]="faXmark"></fa-icon>
-    </button>
-  </div>
-</ng-container>
-<ng-template #editModeTemplate>
-  <input
-    #input
-    type="text"
-    class="input input-bordered w-full"
-    (keyup.enter)="onEnter()"
-    (blur)="switchMode()"
-    [(ngModel)]="description"
-  />
-</ng-template>
+  </ng-template>
+</div>

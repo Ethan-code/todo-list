@@ -1,10 +1,9 @@
 <ng-container *ngFor="let task of sortedTasks; let i = index">
-  <div [ngClass]="i + 1 === tasks.length ? '' : 'border-b-2'" class="p-3">
-    <app-task
-      [task]="task"
-      (taskEdit)="onTaskEdit($event, i)"
-      (taskDelete)="onTaskDelete($event)"
-      (taskStatusChange)="onTaskStatusChange($event)"
-    ></app-task>
-  </div>
+  <app-task
+    [task]="task"
+    (taskEdit)="onTaskEdit($event, i)"
+    (taskDelete)="onTaskDelete($event)"
+    (taskStatusChange)="onTaskStatusChange($event)"
+  ></app-task>
+  <div *ngIf="i + 1 !== tasks.length" class="divider m-0"></div>
 </ng-container>
