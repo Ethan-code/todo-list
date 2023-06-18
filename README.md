@@ -18,21 +18,24 @@ todo list practice.
 - [x] Can update the task description
 - [x] (optional) Can sort tasks by time the tasks are created
 - [ ] (optional) Can filter or search tasks
-- [ ] (optional) Make the UI responsive
+- [x] (optional) Make the UI responsive
 
 ### Submission
 
-- [ ] Clean and extendable code
+- [x] Clean and extendable code
 - [ ] Documentation (source code, architecture)
-- [ ] (optional) Live demo site
+- [x] (optional) Live demo site
 
 ---
 
 ## Try something
 
 - [x] Use commitizen for conventional commits
-- [ ] Use Tailwind for styling
-- [ ] Use NGXS to manage states
+- [x] Use Tailwind for styling
+- [x] Use Vercel to host site
+- [ ] Use SQL like solution to store data (IndexedDB, PonchDB)
+- [ ] Add PWA support
+- [ ] Add Sound Effects
 
 ---
 
