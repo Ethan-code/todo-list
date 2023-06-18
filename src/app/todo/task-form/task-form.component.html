@@ -1,3 +1,9 @@
 <div class="mb-3">
-  <input type="text" class="input input-bordered w-full" (keyup.enter)="onEnter($event)" [(ngModel)]="description" />
+  <input
+    type="text"
+    class="input input-bordered w-full"
+    (keyup.enter)="onEnter($event)"
+    [(ngModel)]="description"
+    placeholder="加入待辦"
+  />
 </div>

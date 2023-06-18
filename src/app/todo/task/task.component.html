@@ -20,10 +20,11 @@
     <input
       #input
       type="text"
-      class="input input-bordered w-full"
+      class="input w-full"
       (keyup.enter)="onEnter()"
       (blur)="switchMode()"
       [(ngModel)]="description"
+      placeholder="修改待辦"
     />
   </ng-template>
 </div>
