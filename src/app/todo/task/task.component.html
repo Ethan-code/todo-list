@@ -3,7 +3,7 @@
     <div class="flex items-center">
       <label class="flex align-center p-2 cursor-pointer">
         <input
-          class="checkbox checkbox-md rounded-full"
+          class="checkbox checkbox-md checkbox-primary rounded-full"
           type="checkbox"
           name="status"
           [checked]="task.status === 'completed'"
@@ -20,7 +20,7 @@
     <input
       #input
       type="text"
-      class="input w-full"
+      class="input input-primary w-full"
       (keyup.enter)="onEnter()"
       (blur)="switchMode()"
       [(ngModel)]="description"
