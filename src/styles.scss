@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@openfonts/noto-serif-tc_all';
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body {
+  font-family: 'Noto Serif TC';
+}
