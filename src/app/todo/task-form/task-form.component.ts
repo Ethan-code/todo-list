@@ -11,6 +11,7 @@ export class TaskFormComponent {
   protected description = '';
 
   protected onEnter(event: Event): void {
+    if (!this.description) return;
     this.taskAdd.emit(this.description);
     this.description = '';
   }
