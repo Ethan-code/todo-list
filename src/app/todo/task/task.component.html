@@ -1,7 +1,7 @@
 <ng-container *ngIf="isViewMode; else editModeTemplate">
   <div class="flex items-center">
     <input
-      class="checkbox me-3"
+      class="checkbox checkbox-md rounded-full me-3"
       type="checkbox"
       name="status"
       [checked]="task.status === 'completed'"

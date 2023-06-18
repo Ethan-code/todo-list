@@ -1,10 +1,10 @@
 <ng-container *ngFor="let task of sortedTasks; let i = index">
-  <app-task
-    [ngClass]="i + 1 === tasks.length ? '' : 'mb-3'"
-    [task]="task"
-    (taskEdit)="onTaskEdit($event, i)"
-    (taskDelete)="onTaskDelete($event)"
-    (taskStatusChange)="onTaskStatusChange($event)"
-  ></app-task>
-  {{ task.status }}
+  <div [ngClass]="i + 1 === tasks.length ? '' : 'border-b-2'" class="p-3">
+    <app-task
+      [task]="task"
+      (taskEdit)="onTaskEdit($event, i)"
+      (taskDelete)="onTaskDelete($event)"
+      (taskStatusChange)="onTaskStatusChange($event)"
+    ></app-task>
+  </div>
 </ng-container>
