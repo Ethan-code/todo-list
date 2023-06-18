@@ -8,10 +8,10 @@ todo list practice.
 
 ### Test coverage
 - [x] Can add tasks with a short description
-- [ ] Show a list of all tasks(completed/uncompleted)
+- [x] Show a list of all tasks(completed/uncompleted)
 - [ ] Can set a task as completed or uncompleted
 - [ ] Can delete a task
-- [ ] Can update the task description
+- [x] Can update the task description
 - [ ] (optional) Can sort tasks by time the tasks are created
 - [ ] (optional) Can filter or search tasks
 - [ ] (optional) Make the UI responsive 

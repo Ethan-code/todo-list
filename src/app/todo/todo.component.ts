@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../service/task.model';
-import { TodoService } from '../service/todo.service';
+import { EditTaskPayload, TodoService } from '../service/todo.service';
+import { EditTaskItemEvent } from './task-list/task-list.component';
 
 @Component({
   selector: 'app-todo',
@@ -25,6 +26,15 @@ export class TodoComponent implements OnInit {
 
   protected onTaskAdd(description: string): void {
     this.todoService.addTask(description);
+    this.fetchTasks();
+  }
+
+  protected onTaskEdit(event: EditTaskItemEvent): void {
+    const editTaskPayload: EditTaskPayload = {
+      id: event.id,
+      description: event.description
+    }
+    this.todoService.editTask(editTaskPayload);
     this.fetchTasks();
   }
 }

@@ -1,3 +1,3 @@
 <ng-container *ngFor="let task of tasks; let i = index">
-  <app-task [ngClass]="i + 1 === tasks.length ? '' : 'mb-3'" [task]="task"></app-task>
+  <app-task [ngClass]="i + 1 === tasks.length ? '' : 'mb-3'" [task]="task" (taskEdit)="onTaskEdit($event, i)"></app-task>
 </ng-container>
