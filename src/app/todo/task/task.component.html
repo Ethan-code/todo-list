@@ -8,7 +8,9 @@
       (change)="onStatusChange($event)"
     />
     <div class="w-full" (click)="switchMode()">{{ task.description }}</div>
-    <button class="btn" type="button" (click)="onDeleteClick($event)">X</button>
+    <button class="btn btn-ghost" type="button" (click)="onDeleteClick($event)">
+      <fa-icon [icon]="faXmark"></fa-icon>
+    </button>
   </div>
 </ng-container>
 <ng-template #editModeTemplate>

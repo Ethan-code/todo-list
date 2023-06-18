@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Task, TaskStatus } from 'src/app/service/task.model';
 
 export interface EditTaskEvent {
@@ -25,6 +26,8 @@ export class TaskComponent {
   @Output() taskStatusChange = new EventEmitter<ChangeTaskStatusEvent>();
 
   @ViewChild('input', { static: false }) inputElement: ElementRef | undefined;
+
+  protected faXmark = faXmark;
 
   protected mode: 'view' | 'edit' = 'view';
   protected description = '';
