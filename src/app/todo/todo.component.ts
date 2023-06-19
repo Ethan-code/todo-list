@@ -57,6 +57,11 @@ export class TodoComponent implements OnInit {
   }
 
   protected onTaskStatusChange(event: ChangeTaskItemStatusEvent): void {
+    if (event.status === 'completed') {
+      this.checkSound.play();
+    } else if (event.status === 'uncompleted') {
+      this.uncheckSound.play();
+    }
     this.todoService.changeTaskStatus(event.id, event.status).subscribe(() => {
       this.fetchTasks();
     });
