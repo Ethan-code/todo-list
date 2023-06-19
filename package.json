@@ -10,7 +10,7 @@
     "commit": "cz",
     "dry-format": "prettier --check .",
     "format": "prettier --write .",
-    "start-pwa": "ng build && http-server -p 8080 -c-1 dist/angular-pwa"
+    "host-dist": "http-server -p 8080 -c-1 dist/todo-list"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +43,7 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "daisyui": "^3.1.1",
+    "http-server": "^14.1.1",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
