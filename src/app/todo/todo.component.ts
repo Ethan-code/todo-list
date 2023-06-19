@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Howl } from 'howler';
 import { Task } from '../service/task.model';
-import { ChangeTaskStatusPayload, DeleteTaskPayload, EditTaskPayload, TodoService } from '../service/todo.service';
+import { TodoService } from '../service/todo.service';
 import { ChangeTaskItemStatusEvent, DeleteTaskItemEvent, EditTaskItemEvent } from './task-list/task-list.component';
 
 @Component({
@@ -38,40 +38,27 @@ export class TodoComponent implements OnInit {
   }
 
   protected onTaskAdd(description: string): void {
-    this.todoService.addTask(description);
-    this.fetchTasks();
+    this.todoService.addTask(description).subscribe(() => {
+      this.fetchTasks();
+    });
   }
 
   protected onTaskEdit(event: EditTaskItemEvent): void {
-    const editTaskPayload: EditTaskPayload = {
-      id: event.id,
-      description: event.description,
-    };
-    this.todoService.editTask(editTaskPayload);
-    this.fetchTasks();
+    this.todoService.editTask(event.id, event.description).subscribe(() => {
+      this.fetchTasks();
+    });
   }
 
   protected onTaskDelete(event: DeleteTaskItemEvent): void {
-    const deleteTaskPayload: DeleteTaskPayload = {
-      id: event.id,
-    };
-    this.todoService.deleteTask(deleteTaskPayload);
-    this.deleteSound.play();
-    this.fetchTasks();
+    this.todoService.deleteTask(event.id).subscribe(() => {
+      this.deleteSound.play();
+      this.fetchTasks();
+    });
   }
 
   protected onTaskStatusChange(event: ChangeTaskItemStatusEvent): void {
-    const ChangeTaskStatusPayload: ChangeTaskStatusPayload = {
-      id: event.id,
-      status: event.status,
-    };
-    // 在 checkbox 勾選時播放音效
-    if (event.status === 'completed') {
-      this.checkSound.play();
-    } else if (event.status === 'uncompleted') {
-      this.uncheckSound.play();
-    }
-    this.todoService.changeTaskStatus(ChangeTaskStatusPayload);
-    this.fetchTasks();
+    this.todoService.changeTaskStatus(event.id, event.status).subscribe(() => {
+      this.fetchTasks();
+    });
   }
 }

@@ -33,7 +33,7 @@ todo list practice.
 - [x] Use commitizen for conventional commits
 - [x] Use Tailwind for styling
 - [x] Use Vercel to host site
-- [ ] Use SQL like solution to store data (IndexedDB, PonchDB)
+- [x] Use SQL like solution to store data (IndexedDB, PonchDB)
 - [ ] Add PWA support
 - [x] Add Sound Effects
 

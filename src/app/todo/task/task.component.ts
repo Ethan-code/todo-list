@@ -3,14 +3,14 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Task, TaskStatus } from 'src/app/service/task.model';
 
 export interface EditTaskEvent {
-  id: string;
+  id: number;
   description: string;
 }
 export interface DelateTaskEvent {
-  id: string;
+  id: number;
 }
 export interface ChangeTaskStatusEvent {
-  id: string;
+  id: number;
   status: TaskStatus;
 }
 

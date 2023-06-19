@@ -4,15 +4,14 @@ import { Task, TaskStatus } from 'src/app/service/task.model';
 import { ChangeTaskStatusEvent, DelateTaskEvent, EditTaskEvent } from '../task/task.component';
 
 export interface EditTaskItemEvent {
-  index: number;
-  id: string;
+  id: number;
   description: string;
 }
 export interface DeleteTaskItemEvent {
-  id: string;
+  id: number;
 }
 export interface ChangeTaskItemStatusEvent {
-  id: string;
+  id: number;
   status: TaskStatus;
 }
 
@@ -63,9 +62,8 @@ export class TaskListComponent implements OnChanges {
     }
   }
 
-  protected onTaskEdit(event: EditTaskEvent, index: number) {
+  protected onTaskEdit(event: EditTaskEvent) {
     this.taskEdit.emit({
-      index,
       id: event.id,
       description: event.description,
     });

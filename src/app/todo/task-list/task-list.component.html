@@ -14,7 +14,7 @@
   <ng-container *ngFor="let task of displayTasks; let i = index">
     <app-task
       [task]="task"
-      (taskEdit)="onTaskEdit($event, i)"
+      (taskEdit)="onTaskEdit($event)"
       (taskDelete)="onTaskDelete($event)"
       (taskStatusChange)="onTaskStatusChange($event)"
     ></app-task>

@@ -1,7 +1,7 @@
 export type TaskStatus = 'completed' | 'uncompleted';
 
 export interface Task {
-  id: string;
+  id: number;
   description: string;
   createDate: Date;
   updateDate: Date;
