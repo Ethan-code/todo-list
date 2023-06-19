@@ -53,7 +53,7 @@ export class MockServer {
       description: payload.description,
       updateDate: new Date(),
     };
-    return from(db.tasks.put(task));
+    return from(db.tasks.update(payload.id, task));
   }
 
   putTaskStatus(payload: UpdateTaskStatusPayload): Observable<number> {
@@ -61,7 +61,7 @@ export class MockServer {
       status: payload.status,
       updateDate: new Date(),
     };
-    return from(db.tasks.put(task));
+    return from(db.tasks.update(payload.id, task));
   }
 
   deletePost(payload: DeleteTaskPayload): Observable<void> {
