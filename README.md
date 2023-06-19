@@ -17,7 +17,7 @@ todo list practice.
 - [x] Can delete a task
 - [x] Can update the task description
 - [x] (optional) Can sort tasks by time the tasks are created
-- [ ] (optional) Can filter or search tasks
+- [x] (optional) Can filter or search tasks
 - [x] (optional) Make the UI responsive
 
 ### Submission
@@ -34,7 +34,7 @@ todo list practice.
 - [x] Use Tailwind for styling
 - [x] Use Vercel to host site
 - [x] Use SQL like solution to store data (IndexedDB, PonchDB)
-- [ ] Add PWA support
+- [x] Add PWA support
 - [x] Add Sound Effects
 
 ---
