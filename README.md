@@ -2,6 +2,23 @@
 
 todo list practice.
 
+## Architecture
+
+### Component Structure
+
+![Component Structure](readme-images/Component-Structure.png)
+
+### Data-Flow
+
+![Data-Flow](readme-images/Data-Flow.png)
+
+> excalidraw file: [architecture](readme-images/Architecture_2023-06-12.excalidraw)
+
+## Resources
+
+- Sound Effects: [Pixabay Sound Effects](https://pixabay.com/sound-effects/)
+- MP3Cutter: [Online MP3 Cutter](https://mp3cut.net/tw/)
+
 ---
 
 ## Requirements
@@ -22,8 +39,8 @@ todo list practice.
 
 ### Submission
 
-- [x] Clean and extendable code
-- [ ] Documentation (source code, architecture)
+- Clean and extendable code
+- Documentation (source code, architecture)
 - [x] (optional) Live demo site
 
 ---
