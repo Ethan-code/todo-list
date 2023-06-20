@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Task, TaskStatus } from 'src/app/service/task.model';
+import { Task, TaskStatus } from 'src/app/service/todo.service';
 import { ChangeTaskStatusEvent, DelateTaskEvent, EditTaskEvent } from '../task/task.component';
 
 export interface EditTaskItemEvent {

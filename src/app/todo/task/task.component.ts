@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Task, TaskStatus } from 'src/app/service/task.model';
+import { Task, TaskStatus } from 'src/app/service/todo.service';
 
 export interface EditTaskEvent {
   id: number;

@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, from, map } from 'rxjs';
 import { DbTask, DbTaskStatus, db } from '../db/db';
-import { Task } from './task.model';
+
+export type ServerTaskStatus = 'completed' | 'uncompleted';
+
+export interface ServerTask {
+  id: number;
+  description: string;
+  createDate: Date;
+  updateDate: Date;
+  status: ServerTaskStatus;
+}
 
 export interface CreateTaskPayload {
   description: string;
@@ -24,7 +33,7 @@ export interface DeleteTaskPayload {
 export class MockServer {
   constructor() {}
 
-  getAllTasks(): Observable<Task[]> {
+  getAllTasks(): Observable<ServerTask[]> {
     return from(db.tasks.toArray()).pipe(
       map((tasks: DbTask[]) =>
         tasks.map((task) => ({

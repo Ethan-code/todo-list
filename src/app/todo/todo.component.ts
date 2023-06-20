@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Howl } from 'howler';
-import { Task } from '../service/task.model';
-import { TodoService } from '../service/todo.service';
+import { Task, TodoService } from '../service/todo.service';
 import { ChangeTaskItemStatusEvent, DeleteTaskItemEvent, EditTaskItemEvent } from './task-list/task-list.component';
 
 @Component({

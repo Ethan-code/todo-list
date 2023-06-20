@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MockServer } from './mock-server';
-import { Task, TaskStatus } from './task.model';
+import { MockServer } from '../server/mock-server';
+
+export type TaskStatus = 'completed' | 'uncompleted';
+
+export interface Task {
+  id: number;
+  description: string;
+  createDate: Date;
+  updateDate: Date;
+  status: TaskStatus;
+}
 
 @Injectable({
   providedIn: 'root',
