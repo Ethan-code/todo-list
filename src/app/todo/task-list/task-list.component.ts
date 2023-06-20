@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Task, TaskStatus } from 'src/app/service/todo.service';
 import { ChangeTaskStatusEvent, DelateTaskEvent, EditTaskEvent } from '../task/task.component';
@@ -54,11 +54,14 @@ export class TaskListComponent implements OnChanges {
   protected selectedCondition = ConditionValue.TODO;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['tasks']) {
-      const tasks = changes['tasks'].currentValue as Task[];
-      this._tasks = tasks.sort((a, b) => b.createDate.getTime() - a.createDate.getTime());
-      const newTasks = this.getFilterTasksByCondition(this._tasks, this.selectedCondition);
-      this.displayTasksSubject.next(newTasks);
+    this.subscribeTasksChange(changes['tasks']);
+  }
+
+  private subscribeTasksChange(tasksChange: SimpleChange) {
+    if (tasksChange) {
+      this._tasks = tasksChange.currentValue as Task[];
+      const filteredTasks = this.getFilteredTasksByCondition(this._tasks, this.selectedCondition);
+      this.displayTasksSubject.next(filteredTasks);
     }
   }
 
@@ -84,11 +87,11 @@ export class TaskListComponent implements OnChanges {
 
   protected onFilterConditionChange(condition: FilteredCondition) {
     this.selectedCondition = condition.value;
-    const filteredTasks = this.getFilterTasksByCondition(this._tasks, condition.value);
+    const filteredTasks = this.getFilteredTasksByCondition(this._tasks, condition.value);
     this.displayTasksSubject.next(filteredTasks);
   }
 
-  private getFilterTasksByCondition(tasks: Task[], value: ConditionValue): Task[] {
+  private getFilteredTasksByCondition(tasks: Task[], value: ConditionValue): Task[] {
     if (ConditionValue.TODO === value) {
       return tasks.filter((task) => task.status === 'uncompleted');
     } else if (ConditionValue.DONE === value) {

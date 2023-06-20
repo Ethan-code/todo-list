@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { MockServer } from '../server/mock-server';
 
 export type TaskStatus = 'completed' | 'uncompleted';
@@ -19,7 +19,9 @@ export class TodoService {
   constructor(private mockserver: MockServer) {}
 
   fetchTasks(): Observable<Task[]> {
-    return this.mockserver.getAllTasks();
+    return this.mockserver
+      .getAllTasks()
+      .pipe(map((tasks) => tasks.sort((a, b) => b.createDate.getTime() - a.createDate.getTime())));
   }
 
   addTask(description: string): Observable<number> {
